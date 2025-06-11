@@ -32,7 +32,6 @@ extensions = [
     'sphinx.ext.graphviz',
     'sphinx_rtd_theme',
     'sphinx_rtd_dark_mode',
-    'sphinxcontrib.twine',
 ]
 
 html_theme           = 'sphinx_rtd_theme' # pylint: disable=invalid-name
