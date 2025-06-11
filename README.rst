@@ -21,19 +21,19 @@ The `twee 3 specification <https://github.com/iftechfoundation/twine-specs/blob/
 
 .. |pypi-version| image:: https://img.shields.io/pypi/v/pytwee
    :alt: PyPI - Version
-   :target: https://pypi.org/project/sphinxcontrib-twine
+   :target: https://pypi.org/project/pytwee
 
 
 .. |pypi-status| image:: https://img.shields.io/pypi/status/pytwee
    :alt: PyPI - Status
-   :target: https://pypi.org/project/sphinxcontrib-twine
+   :target: https://pypi.org/project/pytwee
 
 
 .. |pypi-python| image:: https://img.shields.io/pypi/pyversions/pytwee
    :alt: PyPI - Python Version
-   :target: https://pypi.org/project/sphinxcontrib-twine
+   :target: https://pypi.org/project/pytwee
 
 
 .. |pypi-license| image:: https://img.shields.io/pypi/l/pytwee
    :alt: PyPI - License
-   :target: https://pypi.org/project/sphinxcontrib-twine
+   :target: https://pypi.org/project/pytwee
