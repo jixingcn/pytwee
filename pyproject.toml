@@ -1,0 +1,41 @@
+[project]
+dynamic         = ["version"]
+name            = "pytwee"
+description     ="A parser for the twee format"
+readme          = "README.md"
+license         = "MIT"
+license-files   = ["LICENSE"]
+requires-python = ">=3.7"
+keywords        = ["twine", "twee", "twee3", "story"]
+
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Environment :: Web Environment",
+    "Framework :: Sphinx",
+    "Framework :: Sphinx :: Extension",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Documentation",
+    "Topic :: Utilities",
+]
+
+
+[[project.authors]]
+name  = "Xing Ji"
+email = "me@xingji.me"
+
+
+[project.urls]
+"Homepage"   = "https://pytwee.readthedocs.io"
+"Repository" = "https://github.com/jixingcn/pytwine"
+"Changelog"  = "https://github.com/jixingcn/pytwine/blob/main/CHANGELOG.md"
+"Issues"     = "https://github.com/jixingcn/pytwine/issues"
+
+
+[build-system]
+requires      = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+
+[tool.setuptools.dynamic]
+version = {attr = "pytwine.__version__"}
