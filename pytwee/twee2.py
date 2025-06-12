@@ -123,7 +123,7 @@ class UnparserHTML(twee.Unparser): # pylint: disable=too-few-public-methods
             return '</tw-storydata>'
 
 
-    class Style:
+    class Style: # pylint: disable=too-few-public-methods
         '''
         Make the style element
         '''
@@ -132,7 +132,7 @@ class UnparserHTML(twee.Unparser): # pylint: disable=too-few-public-methods
             return '<style id="twine-user-stylesheet" type="text/twine-css"></style>'
 
 
-    class Script:
+    class Script: # pylint: disable=too-few-public-methods
         '''
         Make the script element
         '''
@@ -141,7 +141,7 @@ class UnparserHTML(twee.Unparser): # pylint: disable=too-few-public-methods
             return '<script id="twine-user-script" type="text/twine-javascript"></script>'
 
 
-    class Tag:
+    class Tag: # pylint: disable=too-few-public-methods
         '''
         Make the tag element
         '''
@@ -168,7 +168,10 @@ class UnparserHTML(twee.Unparser): # pylint: disable=too-few-public-methods
             self.passage = passage
 
         def __call__(self):
-            return f'<tw-passagedata pid="{self.pid}" name="{self.passage.header.name}">\n{self.passage.context}'
+            return f'<tw-passagedata\
+ pid="{self.pid}"\
+ name="{self.passage.header.name}">\
+{self.passage.context}'
 
 
     class PassageEnd: # pylint: disable=too-few-public-methods
