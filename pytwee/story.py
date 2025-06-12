@@ -5,7 +5,11 @@ Story
 import json
 
 class Header:
-    def __init__(self, name, tags, metadata):
+    '''
+    The header of the passage
+    '''
+
+    def __init__(self, name, tags=None, metadata=None):
         if name is None:
             raise NameError('The header must have a name!')
 
@@ -13,33 +17,55 @@ class Header:
 
         self.tags = []
         if tags is not None:
-            tags = tags.strip()
-            if tags != '':
-                tags = tags[1:-1]
-                self.tags = tags.split(' ')
+            if isinstance(tags, str):
+                tags = tags.strip()
+                if tags != '':
+                    tags = tags[1:-1]
+                    self.tags = tags.split(' ')
+            elif isinstance(tags, list):
+                self.tags = tags
+            else:
+                raise ValueError('Input `tags` is not string or list!')
 
         self.metadata = {}
         if metadata is not None:
-            self.metadata = json.loads(metadata)
+            if isinstance(metadata, str):
+                self.metadata = json.loads(metadata)
+            elif isinstance(metadata, map):
+                self.metadata = json.loads(metadata)
+            else:
+                raise ValueError('Input `metadata` is not string or map!')
 
     def __repr__(self):
         return f':: {self.name} {self.tags} {self.metadata}'
 
     @staticmethod
-    def create(name, tags, metadata):
+    def create(name, tags=None, metadata=None):
+        '''
+        Create the header by name, tags, and metadata
+        '''
+
+        # Check the name
         if name is None:
             return None
         name = name.strip()
         if name == '':
             return None
+
         if tags is not None:
             tags = tags.strip()
+
         if metadata is not None:
             metadata = metadata.strip()
-        return Header(name, tags, metadata)
+
+        return Header(name, tags=tags, metadata=metadata)
 
 
-class Passage:
+class Passage: # pylint: disable=too-few-public-methods
+    '''
+    The passage of the story
+    '''
+
     def __init__(self, header, context):
         self.header  = header
         self.context = context
@@ -48,9 +74,9 @@ class Passage:
         return f'{self.header}\n{self.context}'
 
 
-class Story:
+class Story: # pylint: disable=too-few-public-methods
     '''
-    Story
+    Story for the twine
     '''
 
     def __init__(self):

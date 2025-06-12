@@ -2,15 +2,19 @@
 Twee 3
 '''
 
-from .story import Header, Passage
-from . import twee
-
 import re
 import json
 import uuid
 
+from .story import Header, Passage
+from . import twee
+
 
 class StoryPassage:
+    '''
+    The common passage
+    '''
+
     def __init__(self, story, header):
         self.story  = story
         self.header = header
@@ -24,6 +28,10 @@ class StoryPassage:
 
 
 class StoryTitle(StoryPassage):
+    '''
+    The special passage for the story title
+    '''
+
     id = 'StoryTitle'
 
     def __init__(self, story, header):
@@ -39,6 +47,10 @@ class StoryTitle(StoryPassage):
 
 
 class StoryData(StoryPassage):
+    '''
+    The special passage for the story data
+    '''
+
     id = 'StoryData'
 
     def __init__(self, story, header):
@@ -62,8 +74,9 @@ class Parser(twee.Parser):
     '''
     Parser for twee 3
     '''
+
     re_header = re.compile(r'''^([ \t]*::).*$''')
-    re_header_detail = re.compile('\
+    re_header_detail = re.compile(r'\
 ^(?P<ntm>.*)(?P<ntm_t>\[.*\])[ \t]*(?P<ntm_m>\{.*\})[ \t]*\
 |(?P<nmt>.*)(?P<nmt_m>\{.*\})[ \t]*(?P<nmt_t>\[.*\])[ \t]*\
 |(?P<nt>.*)(?P<nt_t>\[.*\])[ \t]*\
@@ -75,7 +88,7 @@ class Parser(twee.Parser):
 
         self.current = None
 
-    def __call__(self, line):
+    def __call__(self, line): # pylint: disable=too-many-branches
         '''
         Parse the source
         '''
@@ -85,7 +98,7 @@ class Parser(twee.Parser):
             if len(rg_header) == 0:
                 return
             rg_header = rg_header[0]
-    
+
             rg_header = Parser.re_header_detail.match(line[len(rg_header):])
             if rg_header is None:
                 return
@@ -120,6 +133,7 @@ class Parser(twee.Parser):
             self.current = None
 
 
-class Unparser(twee.Unparser):
-    def __init__(self):
-        raise NotImplementedError(f'{self.__class__} not ready!')
+class Unparser(twee.Unparser): # pylint: disable=too-few-public-methods
+    '''
+    Unparser for twee 3
+    '''

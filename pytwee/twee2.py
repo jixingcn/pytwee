@@ -5,13 +5,10 @@ Twee 2
 from . import twee
 
 
-class Parser(twee.Parser):
+class Parser(twee.Parser): # pylint: disable=too-few-public-methods
     '''
     Parser for twee 2
     '''
-
-    def __init__(self, story):
-        super().__init__(story)
 
     def __call__(self, line):
         '''
@@ -20,9 +17,10 @@ class Parser(twee.Parser):
         raise NotImplementedError(f'{self.__class__} not ready!')
 
 
-class Unparser(twee.Unparser):
-    def __init__(self, story):
-        super().__init__(story)
+class Unparser(twee.Unparser): # pylint: disable=too-few-public-methods
+    '''
+    Unparser for twee 2
+    '''
 
     def __call__(self):
         #raise NotImplementedError(f'{self.__class__} not ready!')
