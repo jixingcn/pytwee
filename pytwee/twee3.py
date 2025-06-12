@@ -45,10 +45,14 @@ class StoryTitle(StoryPassage):
         self.lines = []
 
     def __call__(self, line):
+        line = line.strip()
+        if line == '':
+            return
+
         self.lines.append(line)
 
     def __del__(self):
-        self.story.title = self.header.name
+        self.story.title = '\n'.join(self.lines)
 
 
 class StoryData(StoryPassage):
@@ -124,11 +128,9 @@ class Parser(twee.Parser):
             if header is None:
                 return
 
-            if header.name.startswith(StoryTitle.id):
-                header.name  = header.name[len(StoryTitle.id):].strip()
+            if header.name == StoryTitle.id:
                 self.current = StoryTitle(self.story, header)
-            elif header.name.startswith(StoryData.id):
-                header.name  = header.name[len(StoryData.id):].strip()
+            elif header.name == StoryData.id:
                 self.current = StoryData(self.story, header)
             else:
                 self.current = StoryPassage(self.story, header)
