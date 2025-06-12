@@ -3,7 +3,7 @@ pytwee
 
 |pylint-badge| |docs-badge|
 
-|pypi-version| |pypi-python| |pypi-status| |pypi-license|
+|pypi-version| |pypi-python| |pypi-status|
 
 
 Features
@@ -12,46 +12,61 @@ Features
 - Supports `twee 3 specification <https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md>`_
 
 
-Usage
-*****
+Use
+***
 
 ::
 
-   $ python -m pip install pytwee
+    $ python -m pip install pytwee
+
+::
+
+    # Parse the twee3
+    import pytwee
+
+    story = pytwee.story.Story()
+
+    with open('my-story.tw', 'rt') as f:
+        parser = pytwee.twee3.Parser(story)
+        for line in iter(lambda: f.readline(), ''):
+            parser(line)
+        del parser #<- very important
+
+    print('story:', story)
 
 
 License
 *******
 
-Under `MIT License <https://github.com/jixingcn/pytwee/blob/main/LICENSE>`_.
+|license|
 
 
 
 .. |pylint-badge| image:: https://img.shields.io/github/actions/workflow/status/jixingcn/pytwee/pylint.yml?label=pylint
-   :alt: GitHub Actions Workflow Status
-   :target: https://github.com/jixingcn/pytwee/actions
+    :alt: GitHub Actions Workflow Status
+    :target: https://github.com/jixingcn/pytwee/actions
 
 
 .. |docs-badge| image:: https://img.shields.io/readthedocs/pytwee/latest
-   :alt: Read the Docs (version)
-   :target: https://pytwee.readthedocs.io
+    :alt: Read the Docs (version)
+    :target: https://pytwee.readthedocs.io
+
+
+.. |license| image:: https://img.shields.io/badge/license-MIT-green
+    :alt: Static Badge
+    :target: https://github.com/jixingcn/pytwee/blob/main/LICENSE
 
 
 .. |pypi-version| image:: https://img.shields.io/pypi/v/pytwee
-   :alt: PyPI - Version
-   :target: https://pypi.org/project/pytwee
+    :alt: PyPI - Version
+    :target: https://pypi.org/project/pytwee
 
 
 .. |pypi-status| image:: https://img.shields.io/pypi/status/pytwee
-   :alt: PyPI - Status
-   :target: https://pypi.org/project/pytwee
+    :alt: PyPI - Status
+    :target: https://pypi.org/project/pytwee
 
 
 .. |pypi-python| image:: https://img.shields.io/pypi/pyversions/pytwee
-   :alt: PyPI - Python Version
-   :target: https://pypi.org/project/pytwee
-
-
-.. |pypi-license| image:: https://img.shields.io/pypi/l/pytwee
-   :alt: PyPI - License
-   :target: https://pypi.org/project/pytwee
+    :alt: PyPI - Python Version
+    :target: https://pypi.org/project/pytwee

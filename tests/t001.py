@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 import pytwee
 
 if __name__ == '__main__':
-    story  = pytwee.story.Story()
+    story = pytwee.story.Story()
 
     with open(os.path.join(os.path.dirname(__file__), 't001.tw'), 'rt') as f:
         parser = pytwee.twee3.Parser(story)
