@@ -1,0 +1,24 @@
+:: StoryData
+{
+   "ifid": "D674C58C-DEFA-4F70-B7A2-27742230C0FC",
+   "format": "SugarCube",
+   "format-version": "2.28.2",
+   "start": "My Starting Passage",
+   "tag-colors": {
+     "bar": "green",
+     "foo": "red",
+     "qaz": "blue"
+   },
+   "zoom": 0.25
+}
+
+ :: An overgrown path
+
+
+  :: An overgrown path [forest spooky]
+
+
+:: An overgrown path {"position":"600,400","size":"100,200"}
+
+
+::An overgrown path [forest spooky] {"position":"600,400","size":"100,200"}

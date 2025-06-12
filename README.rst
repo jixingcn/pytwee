@@ -6,7 +6,25 @@ pytwee
 |pypi-version| |pypi-python| |pypi-status| |pypi-license|
 
 
-The `twee 3 specification <https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md>`_.
+Features
+********
+
+- Supports `twee 3 specification <https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md>`_
+
+
+Usage
+*****
+
+::
+
+   $ python -m pip install pytwee
+
+
+License
+*******
+
+Under `MIT License <https://github.com/jixingcn/pytwee/blob/main/LICENSE>`_.
+
 
 
 .. |pylint-badge| image:: https://img.shields.io/github/actions/workflow/status/jixingcn/pytwee/pylint.yml?label=pylint
