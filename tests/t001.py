@@ -19,9 +19,10 @@ if __name__ == '__main__':
             parser(line)
         del parser
 
-    print('story:', story)
+    print('>> story <<')
+    print(story)
 
-    twee2_unparser = pytwee.twee2.Unparser(story)
-    print('---twee2_unparser')
-    for line in iter(twee2_unparser, None):
+    print('\n>> Twee2 HTML <<')
+    twee2_unparserhtml = pytwee.twee2.UnparserHTML(story)
+    for line in iter(twee2_unparserhtml, None):
         print(line)
