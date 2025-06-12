@@ -16,6 +16,11 @@ class StoryPassage:
     '''
 
     def __init__(self, story, header):
+        if story is None:
+            raise ValueError('The passage must have a story!')
+        if header is None:
+            raise ValueError('The passage must have a header!')
+
         self.story  = story
         self.header = header
         self.lines  = []
@@ -119,9 +124,11 @@ class Parser(twee.Parser):
             if header is None:
                 return
 
-            if header.name == StoryTitle.id:
+            if header.name.startswith(StoryTitle.id):
+                header.name  = header.name[len(StoryTitle.id):].strip()
                 self.current = StoryTitle(self.story, header)
-            elif header.name == StoryData.id:
+            elif header.name.startswith(StoryData.id):
+                header.name  = header.name[len(StoryData.id):].strip()
                 self.current = StoryData(self.story, header)
             else:
                 self.current = StoryPassage(self.story, header)

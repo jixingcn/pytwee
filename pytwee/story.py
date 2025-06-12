@@ -11,7 +11,7 @@ class Header:
 
     def __init__(self, name, tags=None, metadata=None):
         if name is None:
-            raise NameError('The header must have a name!')
+            raise ValueError('The header must have a name!')
 
         self.name = name
 
