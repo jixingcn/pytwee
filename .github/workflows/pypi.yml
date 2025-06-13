@@ -67,7 +67,7 @@ jobs:
 
   publish-to-testpypi:
     name: Publish Python 🐍 distribution 📦 to TestPyPI
-    if: github.repository == 'jixingcn/pytwee' && github.ref_type == 'tag' && endsWith(github.ref, 'dev')
+    if: github.repository == 'jixingcn/pytwee' && github.ref_type == 'tag' && endsWith(github.ref, '.test')
     needs:
     - build
     runs-on: ubuntu-latest
