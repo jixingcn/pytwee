@@ -7,7 +7,7 @@ on:
     - dev
     tags:
     - '[0-9]+.[0-9]+.[0-9]+'
-    - '[0-9]+.[0-9]+.[0-9]+test'
+    - '[0-9]+.[0-9]+.[0-9]+.test'
   pull_request:
     branches:
     - main
@@ -42,7 +42,7 @@ jobs:
 
   publish-to-pypi:
     name: Publish Python 🐍 distribution 📦 to PyPI
-    if: github.repository == 'jixingcn/pytwee' && github.ref_type == 'tag' && !endsWith(github.ref, 'test')
+    if: github.repository == 'jixingcn/pytwee' && github.ref_type == 'tag' && !endsWith(github.ref, '.test')
     needs:
     - build
     runs-on: ubuntu-latest
