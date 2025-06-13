@@ -72,10 +72,13 @@ class UnparserHTML(twee.Unparser):
             self.story = story
 
         def __call__(self):
+            # Copy the attributes from the story
             attributes = {**self.story.data}
+
             if 'ifid' not in attributes:
                 attributes['ifid'] = uuid.uuid4()
 
+            # Find the startnode's value
             start_attr = None
             if 'start' in attributes:
                 start_attr = attributes['start']
@@ -101,6 +104,7 @@ class UnparserHTML(twee.Unparser):
             if startnode is not None:
                 attributes['startnode'] = startnode
 
+            # Remove the tag-colors from attributes
             if 'tag-colors' in attributes:
                 del attributes['tag-colors']
 

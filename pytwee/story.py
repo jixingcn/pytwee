@@ -82,14 +82,7 @@ class Story:
 
     def __init__(self):
         self.title = None
-        self.data  = {
-            'ifid'          : None,
-            'format'        : None,
-            'format-version': None,
-            'start'         : None,
-            'tag-colors'    : None,
-            'zoom'          : None,
-        }
+        self.data  = {}
         self.passages = []
 
     def __repr__(self):
