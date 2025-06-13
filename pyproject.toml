@@ -6,7 +6,7 @@ readme          = "README.rst"
 license         = "MIT"
 license-files   = ["LICENSE"]
 requires-python = ">=3.7"
-keywords        = ["twine", "twee", "twee3", "story"]
+keywords        = ["twine", "twinery", "twee", "twee2", "twee3", "story"]
 
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",

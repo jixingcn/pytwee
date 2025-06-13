@@ -1,6 +1,7 @@
 '''
 Story
 '''
+# pylint: disable=too-few-public-methods
 
 import json
 
@@ -9,7 +10,7 @@ class Header:
     The header of the passage
     '''
 
-    def __init__(self, name, tags=None, metadata=None):
+    def __init__(self, name: str, tags=None, metadata=None):
         if name is None:
             raise ValueError('The header must have a name!')
 
@@ -25,7 +26,7 @@ class Header:
             elif isinstance(tags, list):
                 self.tags = tags
             else:
-                raise ValueError('Input `tags` is not string or list!')
+                raise TypeError('Input `tags` is not string or list!')
 
         self.metadata = {}
         if metadata is not None:
@@ -34,7 +35,7 @@ class Header:
             elif isinstance(metadata, map):
                 self.metadata = json.loads(metadata)
             else:
-                raise ValueError('Input `metadata` is not string or map!')
+                raise TypeError('Input `metadata` is not string or map!')
 
     def __repr__(self):
         return f':: {self.name} {self.tags} {self.metadata}'
@@ -61,7 +62,7 @@ class Header:
         return Header(name, tags=tags, metadata=metadata)
 
 
-class Passage: # pylint: disable=too-few-public-methods
+class Passage:
     '''
     The passage of the story
     '''
@@ -74,7 +75,7 @@ class Passage: # pylint: disable=too-few-public-methods
         return f'{self.header}\n{self.context}'
 
 
-class Story: # pylint: disable=too-few-public-methods
+class Story:
     '''
     Story for the twine
     '''

@@ -1,8 +1,9 @@
 '''
 Twee
 '''
+# pylint: disable=too-few-public-methods
 
-class Parser: # pylint: disable=too-few-public-methods
+class Parser:
     '''
     The parser interface
     '''
@@ -11,7 +12,7 @@ class Parser: # pylint: disable=too-few-public-methods
         self.story = story
 
 
-class Unparser: # pylint: disable=too-few-public-methods
+class Unparser:
     '''
     The unparser interface
     '''

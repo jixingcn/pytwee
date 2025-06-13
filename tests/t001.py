@@ -10,8 +10,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 import pytwee # pylint: disable=wrong-import-position
 
+
 if __name__ == '__main__':
-    story = pytwee.story.Story()
+    story = pytwee.Story()
 
     with open(os.path.join(os.path.dirname(__file__), 't001.tw'), 'rt', encoding='utf-8') as f:
         parser = pytwee.twee3.Parser(story)

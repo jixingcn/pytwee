@@ -2,9 +2,7 @@
 PyTwee
 '''
 
-__version__ = '0.1.0'
-__author__  = 'Xing Ji (me@xingji.me)'
+__version__ = '0.2.0'
+__authors__ = [{'name': 'Xing Ji', 'email': 'me@xingji.me'}]
 
-from . import story
-from . import twee2
-from . import twee3
+from .story import Story

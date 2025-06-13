@@ -1,13 +1,14 @@
 '''
 Twee 2
 '''
+# pylint: disable=too-few-public-methods
 
 import uuid
 
 from . import twee
 
 
-class Parser(twee.Parser): # pylint: disable=too-few-public-methods
+class Parser(twee.Parser):
     '''
     Parser for twee 2
     '''
@@ -19,7 +20,7 @@ class Parser(twee.Parser): # pylint: disable=too-few-public-methods
         raise NotImplementedError(f'{self.__class__} not ready!')
 
 
-class UnparserHTML(twee.Unparser): # pylint: disable=too-few-public-methods
+class UnparserHTML(twee.Unparser):
     '''
     Unparser for twee 2 as HTML
     '''
@@ -62,7 +63,7 @@ class UnparserHTML(twee.Unparser): # pylint: disable=too-few-public-methods
         self.current = 0
 
 
-    class DataStart: # pylint: disable=too-few-public-methods
+    class DataStart:
         '''
         Make the start of the data element
         '''
@@ -111,7 +112,7 @@ class UnparserHTML(twee.Unparser): # pylint: disable=too-few-public-methods
             return f'<tw-storydata name="{self.story.title}"{attributes}>'
 
 
-    class DataEnd: # pylint: disable=too-few-public-methods
+    class DataEnd:
         '''
         Make the end of the data element
         '''
@@ -123,7 +124,7 @@ class UnparserHTML(twee.Unparser): # pylint: disable=too-few-public-methods
             return '</tw-storydata>'
 
 
-    class Style: # pylint: disable=too-few-public-methods
+    class Style:
         '''
         Make the style element
         '''
@@ -132,7 +133,7 @@ class UnparserHTML(twee.Unparser): # pylint: disable=too-few-public-methods
             return '<style id="twine-user-stylesheet" type="text/twine-css"></style>'
 
 
-    class Script: # pylint: disable=too-few-public-methods
+    class Script:
         '''
         Make the script element
         '''
@@ -141,7 +142,7 @@ class UnparserHTML(twee.Unparser): # pylint: disable=too-few-public-methods
             return '<script id="twine-user-script" type="text/twine-javascript"></script>'
 
 
-    class Tag: # pylint: disable=too-few-public-methods
+    class Tag:
         '''
         Make the tag element
         '''
@@ -158,7 +159,7 @@ class UnparserHTML(twee.Unparser): # pylint: disable=too-few-public-methods
             return f'<tw-tag{attributes}></tw-tag>'
 
 
-    class PassageStart: # pylint: disable=too-few-public-methods
+    class PassageStart:
         '''
         Make the start of the passage element
         '''
@@ -174,7 +175,7 @@ class UnparserHTML(twee.Unparser): # pylint: disable=too-few-public-methods
 {self.passage.context}'
 
 
-    class PassageEnd: # pylint: disable=too-few-public-methods
+    class PassageEnd:
         '''
         Make the end of the passage element
         '''

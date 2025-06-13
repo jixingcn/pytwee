@@ -1,6 +1,7 @@
 '''
 Twee 3
 '''
+# pylint: disable=too-few-public-methods
 
 import re
 import json
@@ -140,7 +141,7 @@ r'|(?P<n>.*)$')
             self.story.data = data
 
 
-class Unparser(twee.Unparser): # pylint: disable=too-few-public-methods
+class Unparser(twee.Unparser):
     '''
     Unparser for twee 3
     '''

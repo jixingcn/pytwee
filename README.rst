@@ -9,7 +9,9 @@ pytwee
 Features
 ********
 
-- Supports `twee 3 specification <https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md>`_
+- Parse the **.twee** file with `twee 3 specification <https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md>`_
+- Convert the **Story** to twee 2 HTML
+- [TODO] Convert the **Story** to twee 2 JSON
 
 
 Use
@@ -28,7 +30,7 @@ Use
 
     with open('my-story.tw', 'rt') as f:
         parser = pytwee.twee3.Parser(story)
-        for line in iter(lambda: f.readline(), ''):
+        for line in iter(f.readline, ''):
             parser(line)
         del parser #<- very important
 
