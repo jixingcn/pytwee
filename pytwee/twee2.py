@@ -173,9 +173,18 @@ class UnparserHTML(twee.Unparser):
             self.passage = passage
 
         def __call__(self):
-            return f'<tw-passagedata\
- pid="{self.pid}"\
- name="{self.passage.header.name}">\
+            attributes = {
+                'pid': self.pid,
+                'name': self.passage.header.name,
+                }
+            if len(self.passage.header.tags) > 0:
+                attributes['tags'] = ' '.join(self.passage.header.tags)
+            attributes = {
+                **attributes,
+                **self.passage.header.metadata,
+            }
+            attributes = ' ' + ' '.join([f'{k}="{v}"' for k, v in attributes.items()])
+            return f'<tw-passagedata{attributes}>\
 {self.passage.context}'
 
 
@@ -189,3 +198,66 @@ class UnparserHTML(twee.Unparser):
 
         def __call__(self):
             return '</tw-passagedata>'
+
+
+class UnparserJSON(twee.Unparser):
+    '''
+    Unparser for twee 2 as HTML
+    '''
+
+    def __init__(self, story):
+        super().__init__(story)
+
+        self.current = 0
+        self.steps   = []
+
+        self.steps.append(UnparserJSON.Data(story))
+
+    def __call__(self):
+        if self.current >= len(self.steps):
+            return None
+
+        step = self.steps[self.current]
+        self.current += 1
+        return step()
+
+    def reset(self):
+        '''
+        Reset the process pipline
+        '''
+        self.current = 0
+
+
+    class Data:
+        '''
+        Make the start of the data element
+        '''
+
+        def __init__(self, story):
+            self.story = story
+
+        def __call__(self):
+            jstory = {
+                'name': self.story.title,
+                **self.story.data,
+            }
+
+            if 'ifid' not in jstory:
+                jstory['ifid'] = uuid.uuid4()
+            jstory['ifid'] = str(jstory['ifid'])
+
+            if len(self.story.passages) > 0:
+                jpassages = []
+                for passage in self.story.passages:
+                    jpassage = {
+                        'name': passage.header.name,
+                    }
+                    if len(passage.header.tags) > 0:
+                        jpassage['tags'] = passage.header.tags
+                    if len(passage.header.metadata) > 0:
+                        jpassage['metadata'] = passage.header.metadata
+                    jpassage['text'] = passage.context
+                    jpassages.append(jpassage)
+                jstory['passages'] = jpassages
+
+            return jstory

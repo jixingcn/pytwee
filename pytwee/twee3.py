@@ -16,7 +16,8 @@ class Parser(twee.Parser):
     Parser for twee 3
     '''
 
-    re_header_start = re.compile(r'''^([ \t]*::).*$''')
+    # Required start token, a double colon (::), that must begin the line.
+    re_header_token = re.compile(r'''^(::).*$''')
     re_header_data  = re.compile(
 r'^(?P<ntm>.*)(?P<ntm_t>\[.*\])[ \t]*(?P<ntm_m>\{.*\})[ \t]*'
 r'|(?P<nmt>.*)(?P<nmt_m>\{.*\})[ \t]*(?P<nmt_t>\[.*\])[ \t]*'
@@ -33,7 +34,7 @@ r'|(?P<n>.*)$')
         '''
         Parse the source
         '''
-        rg_header = Parser.re_header_start.match(line)
+        rg_header = Parser.re_header_token.match(line)
         if rg_header is not None:
             rg_header = rg_header.groups()
             if len(rg_header) == 0:

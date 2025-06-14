@@ -8,6 +8,7 @@ Test the story
 # pylint: disable=missing-function-docstring
 
 import unittest
+import os
 
 import pytwee
 
@@ -34,3 +35,22 @@ class TestHeaderExceptions(unittest.TestCase):
             pytwee.story.Header('', tags=1)
         except Exception as e:
             self.assertEqual(type(e), TypeError)
+
+
+class TestPassageMethods(unittest.TestCase):
+    def test_parser(self):
+        passage = pytwee.story.Passage(None, None)
+        self.assertIsInstance(passage, pytwee.story.Passage)
+
+
+class TestStoryMethods(unittest.TestCase):
+    def test_parser(self):
+        story = pytwee.Story()
+        self.assertIsInstance(story, pytwee.Story)
+
+        test_filepath = os.path.join(os.path.dirname(__file__), 't001.tw')
+        with open(test_filepath, 'rt', encoding='utf-8') as f:
+            parser = pytwee.twee3.Parser(story)
+            for line in iter(f.readline, ''):
+                parser(line)
+            del parser # don't forget this line

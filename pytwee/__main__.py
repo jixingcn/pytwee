@@ -60,6 +60,18 @@ if __name__ == '__main__':
 
         for line in iter(unparser, None):
             outputfunc(line)
+    elif args.outputtype == 'twee2json':
+        unparser = twee2.UnparserJSON(story)
+
+        def outputfunc(l):
+            '''Print to console'''
+            print(l)
+
+        if args.outputfile is not None:
+            outputfunc = args.outputfile.write
+
+        for jobj in iter(unparser, None):
+            outputfunc(jobj)
     else:
         raise NotImplementedError('Not ready for this!')
 

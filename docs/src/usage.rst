@@ -31,6 +31,11 @@ As Module
     for line in iter(unparser, None):
         print(line)
 
+    # Convert the story to twine 2 JSON
+    unparser = pytwee.twee2.UnparserJSON(story)
+    for line in iter(unparser, None):
+        print(line)
+
 
 .. warning::
 

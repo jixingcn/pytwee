@@ -6,3 +6,6 @@ __version__ = '0.2.3'
 __authors__ = [{'name': 'Xing Ji', 'email': 'me@xingji.me'}]
 
 from .story import Story
+from .      import story
+from .      import twee2
+from .      import twee3

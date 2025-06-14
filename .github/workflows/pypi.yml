@@ -62,12 +62,6 @@ jobs:
         path: dist/
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
-    - name: Github Release
-      uses: softprops/action-gh-release@v2
-      with:
-        files: |
-          dist/*.whl
-          dist/*.tag.gz
 
   publish-to-testpypi:
     name: Publish Python 🐍 distribution 📦 to TestPyPI
@@ -96,7 +90,7 @@ jobs:
 
   release-to-github:
     name: Release to github
-    if: github.repository == 'jixingcn/pytwee' && github.ref_type == 'tag'
+    if: github.repository == 'jixingcn/pytwee' && github.ref_type == 'tag' && !endsWith(github.ref, '.test')
     needs:
     - build
     runs-on: ubuntu-latest

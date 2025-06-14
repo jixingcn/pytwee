@@ -11,8 +11,8 @@ Features
 
 - Parse the **.twee** file with `twee 3 spec <https://github.com/iftechfoundation/twine-specs/blob/master/twee-3-specification.md>`_
 - Convert the **Story** to `twine 2 HTML spec <https://github.com/iftechfoundation/twine-specs/blob/master/twine-2-htmloutput-spec.md>`_
-- Run as a command
 - [TODO] Convert the **Story** to `twine 2 JSON doc <https://github.com/iftechfoundation/twine-specs/blob/master/twine-2-jsonoutput-doc.md>`_
+- Run as a command
 
 
 Use
