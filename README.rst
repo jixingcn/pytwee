@@ -1,9 +1,9 @@
 pytwee
 ######
 
-|pylint-badge| |docs-badge|
+|pylint-building| |test-building| |docs-badge|
 
-|pypi-version| |pypi-python| |pypi-status|
+|pypi-building| |pypi-version| |pypi-python| |pypi-status|
 
 
 Features
@@ -51,9 +51,14 @@ License
 
 
 
-.. |pylint-badge| image:: https://img.shields.io/github/actions/workflow/status/jixingcn/pytwee/pylint.yml?label=pylint
-    :alt: GitHub Actions Workflow Status
-    :target: https://github.com/jixingcn/pytwee/actions
+.. |pylint-building| image:: https://img.shields.io/github/actions/workflow/status/jixingcn/pytwee/pylint.yml?label=pylint
+    :alt: pylint workflow Status
+    :target: https://github.com/jixingcn/pytwee/actions/workflows/pylint.yml
+
+
+.. |test-building| image:: https://img.shields.io/github/actions/workflow/status/jixingcn/pytwee/test.yml?label=test
+    :alt: test workflow Status
+    :target: https://github.com/jixingcn/pytwee/actions/workflows/test.yml
 
 
 .. |docs-badge| image:: https://img.shields.io/readthedocs/pytwee/latest
@@ -64,6 +69,11 @@ License
 .. |license| image:: https://img.shields.io/badge/license-MIT-green
     :alt: Static Badge
     :target: https://github.com/jixingcn/pytwee/blob/main/LICENSE
+
+
+.. |pypi-building| image:: https://img.shields.io/github/actions/workflow/status/jixingcn/pytwee/pypi.yml?label=pypi
+    :alt: pypi workflow Status
+    :target: https://github.com/jixingcn/pytwee/actions/workflows/pypi.yml
 
 
 .. |pypi-version| image:: https://img.shields.io/pypi/v/pytwee
