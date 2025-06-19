@@ -12,6 +12,9 @@ from .      import twee3
 
 
 def main(argv: list[str] = (), /) -> int:
+    '''
+    execute the command
+    '''
     if not argv:
         argv = sys.argv[1:]
 
@@ -83,4 +86,3 @@ def main(argv: list[str] = (), /) -> int:
 
 if __name__ == '__main__':
     raise SystemExit(main(sys.argv[1:]))
-

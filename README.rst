@@ -1,9 +1,11 @@
 pytwee
 ######
 
-|pylint-building| |test-building| |docs-badge|
+|pylint-action| |test-action| |pypi-action|
 
-|pypi-building| |pypi-version| |pypi-python| |pypi-status|
+|pypi-version| |pypi-python| |pypi-status|
+
+|docs-badge|
 
 
 Features
@@ -51,27 +53,17 @@ License
 
 
 
-.. |pylint-building| image:: https://img.shields.io/github/actions/workflow/status/jixingcn/pytwee/pylint.yml?label=pylint
+.. |pylint-action| image:: https://img.shields.io/github/actions/workflow/status/jixingcn/pytwee/pylint.yml?label=pylint
     :alt: pylint workflow Status
     :target: https://github.com/jixingcn/pytwee/actions/workflows/pylint.yml
 
 
-.. |test-building| image:: https://img.shields.io/github/actions/workflow/status/jixingcn/pytwee/test.yml?label=test
+.. |test-action| image:: https://img.shields.io/github/actions/workflow/status/jixingcn/pytwee/test.yml?label=test
     :alt: test workflow Status
     :target: https://github.com/jixingcn/pytwee/actions/workflows/test.yml
 
 
-.. |docs-badge| image:: https://img.shields.io/readthedocs/pytwee/latest
-    :alt: Read the Docs (version)
-    :target: https://pytwee.readthedocs.io
-
-
-.. |license| image:: https://img.shields.io/badge/license-MIT-green
-    :alt: Static Badge
-    :target: https://github.com/jixingcn/pytwee/blob/main/LICENSE
-
-
-.. |pypi-building| image:: https://img.shields.io/github/actions/workflow/status/jixingcn/pytwee/pypi.yml?label=pypi
+.. |pypi-action| image:: https://img.shields.io/github/actions/workflow/status/jixingcn/pytwee/pypi.yml?label=pypi
     :alt: pypi workflow Status
     :target: https://github.com/jixingcn/pytwee/actions/workflows/pypi.yml
 
@@ -89,3 +81,14 @@ License
 .. |pypi-python| image:: https://img.shields.io/pypi/pyversions/pytwee
     :alt: PyPI - Python Version
     :target: https://pypi.org/project/pytwee
+
+
+.. |docs-badge| image:: https://img.shields.io/readthedocs/pytwee/latest
+    :alt: Read the Docs (version)
+    :target: https://pytwee.readthedocs.io
+
+ 
+.. |license| image:: https://img.shields.io/badge/license-MIT-green
+    :alt: Static Badge
+    :target: https://github.com/jixingcn/pytwee/blob/main/LICENSE
+
