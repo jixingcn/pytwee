@@ -9,7 +9,7 @@ requires-python = ">=3.7"
 keywords        = ["twine", "twinery", "twee", "twee2", "twee3", "story"]
 
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 3 - Alpha",
     "Environment :: Web Environment",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
