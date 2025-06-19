@@ -29,6 +29,7 @@ Use
 
     # Run in console
     $ python -m pytwee tests/t001.tw
+    $ pytwee tests/t001.tw
 
 ::
 

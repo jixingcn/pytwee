@@ -8,6 +8,7 @@ As Command
 ::
 
     python -m pytwee tests/t001.tw
+    pytwee tests/t001.tw
 
 
 As Module
