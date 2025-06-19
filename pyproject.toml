@@ -26,8 +26,12 @@ email = "me@xingji.me"
 [project.urls]
 "Homepage"   = "https://pytwee.readthedocs.io"
 "Repository" = "https://github.com/jixingcn/pytwee"
-"Changelog"  = "https://github.com/jixingcn/pytwee/blob/main/CHANGELOG.md"
+"Changelog"  = "https://github.com/jixingcn/pytwee/blob/main/CHANGELOG.rst"
 "Issues"     = "https://github.com/jixingcn/pytwee/issues"
+
+
+[project.scripts]
+"pytwee" = "pytwee.__main__:main"
 
 
 [build-system]

@@ -11,7 +11,10 @@ from .      import twee2
 from .      import twee3
 
 
-if __name__ == '__main__':
+def main(argv: list[str] = (), /) -> int:
+    if not argv:
+        argv = sys.argv[1:]
+
     parser = argparse.ArgumentParser(
         prog        = 'pytwee',
         description = '\n'.join([
@@ -39,7 +42,7 @@ if __name__ == '__main__':
         help='Output file path',
         )
 
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     story = Story()
 
@@ -75,4 +78,9 @@ if __name__ == '__main__':
     else:
         raise NotImplementedError('Not ready for this!')
 
-    sys.exit(0)
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main(sys.argv[1:]))
+
