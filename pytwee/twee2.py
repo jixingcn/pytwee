@@ -38,11 +38,13 @@ class UnparserHTML(twee.Unparser):
             for k, v in tag_colors.items():
                 self.steps.append(UnparserHTML.Tag({'name': k, 'color': v}))
 
-        script_passage_ids = [i for i, p in enumerate(story.passages) if 'script' in p.header.tags]
+        script_passage_ids = [i for i, p in enumerate(story.passages)
+                              if 'script' in p.header.tags]
         for i in script_passage_ids:
             self.steps.append(UnparserHTML.Script(story.passages[i]))
 
-        stylesheet_passage_ids = [i for i, p in enumerate(story.passages) if 'stylesheet' in p.header.tags]
+        stylesheet_passage_ids = [i for i, p in enumerate(story.passages)
+                                  if 'stylesheet' in p.header.tags]
         for i in stylesheet_passage_ids:
             self.steps.append(UnparserHTML.Stylesheet(story.passages[i]))
 
@@ -163,7 +165,8 @@ class UnparserHTML(twee.Unparser):
             element_id = ''
             if self.passage.header.name != '':
                 element_id = f' id="{self.passage.header.name}"'
-            return f'<script{element_id} type="text/twine-javascript">{self.passage.context}</script>'
+            return \
+f'<script{element_id} type="text/twine-javascript">{self.passage.context}</script>'
 
 
     class Tag:
