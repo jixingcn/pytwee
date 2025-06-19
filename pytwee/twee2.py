@@ -4,6 +4,7 @@ Twee 2
 # pylint: disable=too-few-public-methods
 
 import uuid
+import html
 
 from . import twee
 
@@ -208,7 +209,7 @@ f'<script{element_id} type="text/twine-javascript">{self.passage.context}</scrip
             }
             attributes = ' ' + ' '.join([f'{k}="{v}"' for k, v in attributes.items()])
             return f'<tw-passagedata{attributes}>\
-{self.passage.context}'
+{html.escape(self.passage.context)}'
 
 
     class PassageEnd:
