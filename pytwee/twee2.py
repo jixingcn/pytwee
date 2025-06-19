@@ -33,16 +33,24 @@ class UnparserHTML(twee.Unparser):
 
         self.steps.append(UnparserHTML.DataStart(story))
 
-        self.steps.append(UnparserHTML.Style())
-
-        self.steps.append(UnparserHTML.Script())
-
         if 'tag-colors' in story.data:
             tag_colors = story.data['tag-colors']
             for k, v in tag_colors.items():
                 self.steps.append(UnparserHTML.Tag({'name': k, 'color': v}))
 
+        script_passage_ids = [i for i, p in enumerate(story.passages) if 'script' in p.header.tags]
+        for i in script_passage_ids:
+            self.steps.append(UnparserHTML.Script(story.passages[i]))
+
+        stylesheet_passage_ids = [i for i, p in enumerate(story.passages) if 'stylesheet' in p.header.tags]
+        for i in stylesheet_passage_ids:
+            self.steps.append(UnparserHTML.Stylesheet(story.passages[i]))
+
         for i, passage in enumerate(story.passages):
+            if i in script_passage_ids:
+                continue
+            if i in stylesheet_passage_ids:
+                continue
             self.steps.append(UnparserHTML.PassageStart(i, passage))
             self.steps.append(UnparserHTML.PassageEnd(passage))
 
@@ -128,13 +136,19 @@ class UnparserHTML(twee.Unparser):
             return '</tw-storydata>'
 
 
-    class Style:
+    class Stylesheet:
         '''
-        Make the style element
+        Make the stylesheet element
         '''
 
+        def __init__(self, passage):
+            self.passage = passage
+
         def __call__(self):
-            return '<style id="twine-user-stylesheet" type="text/twine-css"></style>'
+            element_id = ''
+            if self.passage.header.name != '':
+                element_id = f' id="{self.passage.header.name}"'
+            return f'<style{element_id} type="text/twine-css">{self.passage.context}</style>'
 
 
     class Script:
@@ -142,8 +156,14 @@ class UnparserHTML(twee.Unparser):
         Make the script element
         '''
 
+        def __init__(self, passage):
+            self.passage = passage
+
         def __call__(self):
-            return '<script id="twine-user-script" type="text/twine-javascript"></script>'
+            element_id = ''
+            if self.passage.header.name != '':
+                element_id = f' id="{self.passage.header.name}"'
+            return f'<script{element_id} type="text/twine-javascript">{self.passage.context}</script>'
 
 
     class Tag:
@@ -249,15 +269,26 @@ class UnparserJSON(twee.Unparser):
             if len(self.story.passages) > 0:
                 jpassages = []
                 for passage in self.story.passages:
-                    jpassage = {
-                        'name': passage.header.name,
-                    }
-                    if len(passage.header.tags) > 0:
-                        jpassage['tags'] = passage.header.tags
-                    if len(passage.header.metadata) > 0:
-                        jpassage['metadata'] = passage.header.metadata
-                    jpassage['text'] = passage.context
-                    jpassages.append(jpassage)
+                    if 'script' in passage.header.tags:
+                        if 'script' not in jstory:
+                            jstory['script'] = passage.context
+                        else:
+                            jstory['script'] += '\n' + passage.context
+                    elif 'stylesheet' in passage.header.tags:
+                        if 'style' not in jstory:
+                            jstory['style'] = passage.context
+                        else:
+                            jstory['style'] += '\n' + passage.context
+                    else:
+                        jpassage = {
+                            'name': passage.header.name,
+                        }
+                        if len(passage.header.tags) > 0:
+                            jpassage['tags'] = passage.header.tags
+                        if len(passage.header.metadata) > 0:
+                            jpassage['metadata'] = passage.header.metadata
+                        jpassage['text'] = passage.context
+                        jpassages.append(jpassage)
                 jstory['passages'] = jpassages
 
             return jstory
