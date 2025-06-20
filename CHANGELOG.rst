@@ -1,6 +1,14 @@
 Changelog
 #########
 
+0.3.3 - 0.3.1
+*************
+
+- Add the script in pyproject
+- Process two special tags - script and stylesheet
+- Do html.escape for context
+
+
 0.3.0
 *****
 
