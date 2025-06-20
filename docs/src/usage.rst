@@ -24,7 +24,7 @@ As Module
     with open('my-story.tw', 'rt', encoding='utf-8') as f:
         parser = pytwee.twee3.Parser(story)
         for line in iter(f.readline, ''):
-            parser(line)
+            parser(line.rstrip('\n'))
         del parser # don't forget this line
 
     # Convert the story to twine 2 HTML

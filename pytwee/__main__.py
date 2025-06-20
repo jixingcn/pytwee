@@ -51,7 +51,7 @@ def main(argv: list[str] = (), /) -> int:
 
     parser = twee3.Parser(story)
     for line in iter(args.inputfile.readline, ''):
-        parser(line)
+        parser(line.rstrip('\n'))
     del parser
 
     if args.outputtype == 'twee2html':

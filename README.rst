@@ -44,7 +44,7 @@ Use
     with open('my-story.tw', 'rt') as f:
         parser = pytwee.twee3.Parser(story)
         for line in iter(f.readline, ''):
-            parser(line)
+            parser(line.rstrip('\n'))
         del parser #<- very important
 
     print('story:', story)
